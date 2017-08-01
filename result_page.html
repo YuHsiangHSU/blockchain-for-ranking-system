@@ -1,0 +1,251 @@
+<html>
+    <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="/static/web3/dist/web3.js"></script>
+	<script type="text/javascript">
+    	var Web3 = require('web3');
+   	var web3 = new Web3();
+    	web3.setProvider(new web3.providers.HttpProvider("http://140.113.31.181:8545"));
+
+	function aaa() {
+
+var token = web3.eth.contract([{"constant":false,"inputs":[{"name":"movie_id","type":"uint256"},{"name":"movie_rating","type":"uint256"}],"name":"ScoreCal","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"input","type":"uint256"}],"name":"sqrt","outputs":[{"name":"output","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"index","type":"uint256"}],"name":"getReturnValue","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"movie_rating","type":"uint256"}],"name":"ScoreCal3","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"movie_score","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"total_mean_1","type":"uint256"},{"name":"total_mean_2","type":"uint256"},{"name":"temp_1","type":"uint256"},{"name":"temp_2","type":"uint256"},{"name":"movie_rating","type":"uint256"}],"name":"StdCal","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"movie_rating","type":"uint256"}],"name":"ScoreCal2","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"mv_rating_origin","outputs":[{"name":"userId","type":"address"},{"name":"movieId","type":"uint256"},{"name":"rating","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"final_optimization_score","outputs":[{"name":"movieId","type":"uint256"},{"name":"rating","type":"uint256"}],"payable":false,"type":"function"},{"inputs":[],"payable":false,"type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"userId","type":"address"},{"indexed":false,"name":"movieId","type":"uint256"},{"indexed":false,"name":"rating","type":"uint256"}],"name":"movie_input","type":"event"}]).at("0x8A9432c400958875D0d118864fF8294EbCf57550");	
+
+		var accounts = web3.eth.accounts;
+		console.log(accounts);
+		var event = token.movie_input({some: 'args'}, {fromBlock: 0, toBlock: 'latest'});
+		event.get(function(error, result){
+
+		var num_1 = result.length-1;
+		for (i=0 ; i<=num_1 ; i++){
+		var num = document.getElementById("mytable").rows.length;		    
+		var Tr = document.getElementById("mytable").insertRow(num);
+		    Td = Tr.insertCell(Tr.cells.length);
+		    var k = result[i].args.userId;
+		    Td.innerHTML= '<div "name[]">' + k + '</div>';
+		    Td = Tr.insertCell(Tr.cells.length);
+		    var l = result[i].args.movieId;
+		    Td.innerHTML='<div "content[]">' + l + '</div>';
+		    Td = Tr.insertCell(Tr.cells.length);
+		    var m = result[i].args.rating;
+		    Td.innerHTML='<div "lala[]">' + m + '</div>';
+		
+		}
+		});
+
+
+//		document.getElementById('status_1').innerText = web3.eth.defaultAccount;
+//		document.getElementById('status_1').innerText = token.ee.call();
+		var v1 = String(token.getReturnValue(1));
+		document.getElementById('1_id').innerText = v1.split(",")[0];
+		document.getElementById('1_rating').innerText = v1.split(",")[1];
+		var v2 = String(token.getReturnValue(2));
+		document.getElementById('2_id').innerText = v2.split(",")[0];
+		document.getElementById('2_rating').innerText = v2.split(",")[1];
+		var v3 = String(token.getReturnValue(3));
+		document.getElementById('3_id').innerText = v3.split(",")[0];
+		document.getElementById('3_rating').innerText = v3.split(",")[1];
+		var v4 = String(token.getReturnValue(4));
+		document.getElementById('4_id').innerText = v4.split(",")[0];
+		document.getElementById('4_rating').innerText = v4.split(",")[1];
+		var v5 = String(token.getReturnValue(5));
+		document.getElementById('5_id').innerText = v5.split(",")[0];
+		document.getElementById('5_rating').innerText = v5.split(",")[1];
+		var v6 = String(token.getReturnValue(6));
+		document.getElementById('6_id').innerText = v6.split(",")[0];
+		document.getElementById('6_rating').innerText = v6.split(",")[1];
+		var v7 = String(token.getReturnValue(7));
+		document.getElementById('7_id').innerText = v7.split(",")[0];
+		document.getElementById('7_rating').innerText = v7.split(",")[1];
+		var v8 = String(token.getReturnValue(8));
+		document.getElementById('8_id').innerText = v8.split(",")[0];
+		document.getElementById('8_rating').innerText = v8.split(",")[1];
+		var v9 = String(token.getReturnValue(9));
+		document.getElementById('9_id').innerText = v9.split(",")[0];
+		document.getElementById('9_rating').innerText = v9.split(",")[1];
+		var v10 = String(token.getReturnValue(10));
+		document.getElementById('10_id').innerText = v10.split(",")[0];
+		document.getElementById('10_rating').innerText = v10.split(",")[1];
+		var v11 = String(token.getReturnValue(11));
+		document.getElementById('11_id').innerText = v11.split(",")[0];
+		document.getElementById('11_rating').innerText = v11.split(",")[1];
+		var v12 = String(token.getReturnValue(12));
+		document.getElementById('12_id').innerText = v12.split(",")[0];
+		document.getElementById('12_rating').innerText = v12.split(",")[1];
+		var v13 = String(token.getReturnValue(13));
+		document.getElementById('13_id').innerText = v13.split(",")[0];
+		document.getElementById('13_rating').innerText = v13.split(",")[1];
+		var v14 = String(token.getReturnValue(14));
+		document.getElementById('14_id').innerText = v14.split(",")[0];
+		document.getElementById('14_rating').innerText = v14.split(",")[1];
+		var v15 = String(token.getReturnValue(15));
+		document.getElementById('15_id').innerText = v15.split(",")[0];
+		document.getElementById('15_rating').innerText = v15.split(",")[1];
+		var v16 = String(token.getReturnValue(16));
+		document.getElementById('16_id').innerText = v16.split(",")[0];
+		document.getElementById('16_rating').innerText = v16.split(",")[1];
+		var v17 = String(token.getReturnValue(17));
+		document.getElementById('17_id').innerText = v17.split(",")[0];
+		document.getElementById('17_rating').innerText = v17.split(",")[1];
+		var v18 = String(token.getReturnValue(18));
+		document.getElementById('18_id').innerText = v18.split(",")[0];
+		document.getElementById('18_rating').innerText = v18.split(",")[1];
+		var v19 = String(token.getReturnValue(19));
+		document.getElementById('19_id').innerText = v19.split(",")[0];
+		document.getElementById('19_rating').innerText = v19.split(",")[1];
+		var v20 = String(token.getReturnValue(20));
+		document.getElementById('20_id').innerText = v20.split(",")[0];
+		document.getElementById('20_rating').innerText = v20.split(",")[1];
+
+	}
+	</script>
+    </head>
+    <body onload="aaa();">
+
+
+	    <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">MixChain</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">New Movie</a></li>
+              <li><a href="#">Trailer</a></li>
+              <li><a href="#">Ranking</a></li>
+              <li><a href="#">Showtimes</a></li>
+            </ul>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <h1>Movie Rating<small> BlockChainess Rating System</small></h1>
+            <p>Please welcome to join our rating system.</p>
+            <div class="col-sm-12" style="background-color:grey;"></div>
+                <div class="col-sm-12" style="background-color:lavender;">
+                <div class="row">
+                    <div class="col-sm-5" style="background-color:lavenderblush;">
+                        <div class="container">
+                            <h2>Final Movie Rating</h2>
+                                <p>Let's check out the final movie rating:</p>            
+					<table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Movie_Id</th>
+                                                <th>Movie_Rating</th>
+                                            </tr>
+                                        </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td id="1_id"></td>
+                                            <td id="1_rating"></td>
+                                        </tr>
+                                        <tr>
+                                            <td id="2_id"></td>
+                                            <td id="2_rating"></td>
+                                        </tr>
+                                        <tr>
+                                            <td id="3_id"></td>
+                                            <td id="3_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="4_id"></td>
+                                            <td id="4_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="5_id"></td>
+                                            <td id="5_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="6_id"></td>
+                                            <td id="6_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="7_id"></td>
+                                            <td id="7_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="8_id"></td>
+                                            <td id="8_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="9_id"></td>
+                                            <td id="9_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="10_id"></td>
+                                            <td id="10_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="11_id"></td>
+                                            <td id="11_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="12_id"></td>
+                                            <td id="12_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="13_id"></td>
+                                            <td id="13_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="14_id"></td>
+                                            <td id="14_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="15_id"></td>
+                                            <td id="15_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="16_id"></td>
+                                            <td id="16_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="17_id"></td>
+                                            <td id="17_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="18_id"></td>
+                                            <td id="18_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="19_id"></td>
+                                            <td id="19_rating"></td>
+                                        </tr>
+					<tr>
+                                            <td id="20_id"></td>
+                                            <td id="20_rating"></td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                        </div>    
+                    </div>
+                    <div class="col-sm-7" style="background-color:lavender;">
+			<div class="container">
+                            <h2>History of Movie Rating</h2>
+                                <p>Let's check out the history movie rating:</p>
+			<table class="table table-hover" id=mytable>
+                                        <thead>
+                                            <tr>
+                                                <th>Address</th>                                                
+						<th>Movie_Id</th>
+                                                <th>Movie_Rating</th>
+                                            </tr>
+                                        </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><div name="name[]"></div></td>
+                                            <td><div name="content[]"></div></td>
+					    <td><div name="lala[]"></div></td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+			</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

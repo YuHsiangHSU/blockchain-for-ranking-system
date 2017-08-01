@@ -1,0 +1,164 @@
+<!doctype>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="/static/web3/dist/web3.js"></script>
+<script type="text/javascript">
+
+    var Web3 = require('web3');
+    var web3 = new Web3();
+    web3.setProvider(new web3.providers.HttpProvider("http://140.113.31.181:8545"));
+
+    function createExampleContract() {
+
+        // let's assume that coinbase is our account
+	web3.eth.defaultAccount = web3.eth.accounts[parseInt(document.getElementById("input3").value)];
+        web3.personal.unlockAccount(web3.eth.defaultAccount, 'chain-3', 300);
+	        
+	// create contract
+	var token = web3.eth.contract([{"constant":false,"inputs":[{"name":"movie_id","type":"uint256"},{"name":"movie_rating","type":"uint256"}],"name":"ScoreCal","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"input","type":"uint256"}],"name":"sqrt","outputs":[{"name":"output","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"index","type":"uint256"}],"name":"getReturnValue","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"movie_rating","type":"uint256"}],"name":"ScoreCal3","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"movie_score","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"total_mean_1","type":"uint256"},{"name":"total_mean_2","type":"uint256"},{"name":"temp_1","type":"uint256"},{"name":"temp_2","type":"uint256"},{"name":"movie_rating","type":"uint256"}],"name":"StdCal","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"movie_rating","type":"uint256"}],"name":"ScoreCal2","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"mv_rating_origin","outputs":[{"name":"userId","type":"address"},{"name":"movieId","type":"uint256"},{"name":"rating","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"final_optimization_score","outputs":[{"name":"movieId","type":"uint256"},{"name":"rating","type":"uint256"}],"payable":false,"type":"function"},{"inputs":[],"payable":false,"type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"userId","type":"address"},{"indexed":false,"name":"movieId","type":"uint256"},{"indexed":false,"name":"rating","type":"uint256"}],"name":"movie_input","type":"event"}]).at("0x8A9432c400958875D0d118864fF8294EbCf57550");
+	//document.getElementById('status').innerText = token.coinBalanceOf(web3.eth.defaultAccount);
+
+	var input_1 = document.getElementById("input1").value;
+	var input_2 = document.getElementById("input2").value;
+	
+	token.ScoreCal(input_1,input_2,{from: web3.eth.accounts[parseInt(document.getElementById("input3").value)], gas: 4700000});
+//	document.getElementById('status').innerText = token.address;
+	var a = parseInt(document.getElementById("input3").value);	
+//	document.getElementById('status_1').innerText = a;
+//	alert(typeof())
+
+//	var a = token.getUser(0);	
+//	document.getElementById('status').innerText = a;
+//	document.getElementById('result').innerText = token.getUser(1);
+//	document.getElementById('result_1').innerText = token.getUser(2);
+//	$(function(){
+//    	var text = $.trim($('#result_1').text()),
+//    	word = text.split(',');
+//    	alert(word[1])
+//	});
+	
+
+	
+
+//	alert('Please waiting......');	
+	setTimeout("location.href = '/ranking';",60000);
+//, function (err, result) {
+//            if(err) {
+//                console.error(err);
+//                return;
+            // callback fires twice, we only want the second call when the contract is deployed
+//            } else if(result.address){
+//                document.getElementById('status').innerText = token.address;
+//		var aa = 123; 
+//            }
+//        });
+//	var a = token.address;
+            
+//	var cc = token.aa;
+//	document.getElementById('status').innerText = token.num;
+
+    
+
+
+}
+
+
+
+
+    function callExampleContract() {
+        // this should be generated by ethereum
+        var param = parseInt(document.getElementById('value').value);
+
+        // call the contract
+        var res = myContract.multiply(param);
+        document.getElementById('result').innerText = res.toString(10);
+    }
+
+</script>
+</head>
+<body> 
+<nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">MixChain</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">New Movie</a></li>
+              <li><a href="#">Trailer</a></li>
+              <li><a href="#">Ranking</a></li>
+              <li><a href="#">Showtimes</a></li>
+            </ul>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <h1>Movie Rating<small> BlockChainess Rating System</small></h1>
+            <p>Please welcome to join our rating system.</p>
+            <div class="col-sm-12" style="background-color:grey;"></div>
+                <div class="col-sm-12" style="background-color:lavender;">
+                <div class="row">
+                    <div class="col-sm-1" style="background-color:lavender;"></div>
+                    <div class="col-sm-8" style="background-color:lavenderblush;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+				    {% load staticfiles %}
+                                    <img src="{% static "/6598.jpg" %}" alt="Wondered Woman" style="width:100%">
+                                    <div class="caption">
+                                        <p>史詩動作冒險鉅片《神力女超人》，將在今年夏季於全球隆重上映。本片將由女星蓋兒加朵領銜主演，派蒂珍金斯（《女魔頭》、AMC台影集《謀殺》）執導。眾星雲集的國際卡司還包括：克里斯潘恩（《星際爭霸戰》系列電影）、羅蘋萊特（《龍紋身的女孩》、Netflix影集《紙牌屋》 ）、丹尼休斯頓（《超世紀封神榜》、《X戰警：金鋼狼》）、大衛休里斯...<small><u><font color="blue"><a href="6598.jpg"><詳全文></a></font></u></small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                <img src="{% static "/6619.jpg" %}" alt="Eating Love" style="width:98%">
+                                <div class="caption">
+                                    <p>台灣影史票房最高系列電影！ 《變形金剛》系列在全台橫掃23億新台幣票房！ 《變形金剛》全台票房: 3億7千5百多萬 《變形金剛：復仇之戰》全台票房: 5億1千7百多萬 《變形金剛3》全台票房: 7億6千2百多萬 台灣影史第5名 《變形金剛：絕跡重生》全台票房: 6億1千9百多萬 台灣影史第6名 變形金剛最新篇章《...<small><u><font color="blue"><a href="6619.jpg"><詳全文></a></font></u></small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                             <div class="thumbnail">
+                                <img src="{% static "/6647.jpg" %}" alt="Power Man" style="width:100%">
+                                <div class="caption">
+                                     <p>湯姆克魯斯領銜主演一部氣勢磅薄、高潮迭起的傳奇故事，這個故事自從人類文明起始以來，便受到全世界的各大文明深深著迷，那就是《神鬼傳奇》。 一直被認為安全地埋藏在荒涼沙漠地底深處的墓穴中，一位古代的女王（《金牌特務》、《星際爭霸戰：浩瀚無垠》蘇菲亞波提拉 飾）生前遭到冤枉謀害，現在卻突然甦醒，將她沉寂和累積了數...<small><u><font color="blue"><a href="6647.jpg"><詳全文></a></font></u></small></p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="background-color:lavender;">
+                      <h3> <span class="label label-default">Movie Rating</span> </h3>
+                      <br>
+                        <form>
+                             <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input id="input3" type="number" min="0" max="1" class="form-control" name="movie_people" placeholder="Who_are_you">
+                            </div>
+			    <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-film"></i></span>
+                                    <input id="input1" type="number" min="1" max="20" class="form-control" name="movie_id" placeholder="Movie_Id">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
+                                    <input id="input2" type="number" min="1" max="5" class="form-control" name="movie_rating" placeholder="Movie_Rating">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <button type="button" onclick="createExampleContract();" class="btn btn-default">Submit</button>
+                            </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>
+
